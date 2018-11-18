@@ -74,15 +74,15 @@ public:
     }
 
     void add(Cube c){
-        for(int k=0; k<c.s; k++){
+        for(uint32_t k=0; k<c.s; k++){
             //first tri
-            uint32_t mor1[3]={0,0,0};
+            uint32_t mor1[3]={0,0,1};
             for(int i=0; i<3; i++){
                 d+=mor1[i];
             }
-            uint32_t c11[3]={-c.s/2,-c.s/2,0};
-            uint32_t c12[3]={c.s/2,-c.s/2,0};
-            uint32_t c13[3]={-c.s/2,c.s/2,0};
+            uint32_t c11[3]={-c.s/2,-c.s/2,k};
+            uint32_t c12[3]={c.s/2,-c.s/2,k};
+            uint32_t c13[3]={-c.s/2,c.s/2,k};
             uint16_t end1=0;
             for(int i=0; i<3; i++){
                 d+=c11[i];
@@ -96,13 +96,13 @@ public:
             d+=end1;
 
             //second tri
-            uint32_t mor2[3]={0,0,0};
+            uint32_t mor2[3]={0,0,1};
             for(int i=0; i<3; i++){
                 d+=mor2[i];
             }
-            uint32_t c21[3]={c.s/2,-c.s/2,0};
-            uint32_t c22[3]={-c.s/2,c.s/2,0};
-            uint32_t c23[3]={c.s/2,c.s/2,0};
+            uint32_t c21[3]={c.s/2,-c.s/2,k};
+            uint32_t c22[3]={-c.s/2,c.s/2,k};
+            uint32_t c23[3]={c.s/2,c.s/2,k};
             uint16_t end2=0;
             for(int i=0; i<3; i++){
                 d+=c21[i];
@@ -121,15 +121,15 @@ public:
     void add(Cylinder cyl){
         uint32_t cos=0.766*cyl.r;
         uint32_t sin=0.643*cyl.r;
-        for(int j=0; j<cyl.h; j++){
+        for(uint32_t j=0; j<cyl.h; j++){
             //first tri
-            uint32_t cymor1[3]={0,0,0};
+            uint32_t cymor1[3]={0,0,1};
             for(int i=0; i<3; i++) {
                 d += cymor1[i];
             }
-            uint32_t cy11[3]={0,cyl.r,0};
-            uint32_t cy12[3]={-cos,sin,0};
-            uint32_t cy13[3]={-cyl.r,0,0};
+            uint32_t cy11[3]={0,cyl.r,j+10};
+            uint32_t cy12[3]={-cos,sin,j+10};
+            uint32_t cy13[3]={-cyl.r,0,j+10};
             uint16_t end1=0;
             for(int i=0; i<3; i++){
                 d+=cy11[i];
@@ -143,13 +143,13 @@ public:
             d+=end1;
 
             //second tri
-            uint32_t cymor2[3]={0,0,0};
+            uint32_t cymor2[3]={0,0,1};
             for(int i=0; i<3; i++) {
                 d += cymor2[i];
             }
-            uint32_t cy21[3]={0,cyl.r,0};
-            uint32_t cy22[3]={-cyl.r,0,0};
-            uint32_t cy23[3]={-cos,-sin,0};
+            uint32_t cy21[3]={0,cyl.r,j+10};
+            uint32_t cy22[3]={-cyl.r,0,j+10};
+            uint32_t cy23[3]={-cos,-sin,j+10};
             uint16_t end2=0;
             for(int i=0; i<3; i++){
                 d+=cy21[i];
@@ -163,13 +163,13 @@ public:
             d+=end2;
 
             //third tri
-            uint32_t cymor3[3]={0,0,0};
+            uint32_t cymor3[3]={0,0,1};
             for(int i=0; i<3; i++) {
                 d += cymor3[i];
             }
-            uint32_t cy31[3]={0,cyl.r,0};
-            uint32_t cy32[3]={-cos,-sin,0};
-            uint32_t cy33[3]={0,-cyl.r,0};
+            uint32_t cy31[3]={0,cyl.r,j+10};
+            uint32_t cy32[3]={-cos,-sin,j+10};
+            uint32_t cy33[3]={0,-cyl.r,j+10};
             uint16_t end3=0;
             for(int i=0; i<3; i++){
                 d+=cy31[i];
@@ -184,13 +184,13 @@ public:
 
 
             //fourth tri
-            uint32_t cymor4[3]={0,0,0};
+            uint32_t cymor4[3]={0,0,1};
             for(int i=0; i<3; i++) {
                 d += cymor4[i];
             }
-            uint32_t cy41[3]={0,cyl.r,0};
-            uint32_t cy42[3]={0,-cyl.r,0};
-            uint32_t cy43[3]={cos,-sin,0};
+            uint32_t cy41[3]={0,cyl.r,j+10};
+            uint32_t cy42[3]={0,-cyl.r,j+10};
+            uint32_t cy43[3]={cos,-sin,j+10};
             uint16_t end4=0;
             for(int i=0; i<3; i++){
                 d+=cy41[i];
@@ -205,13 +205,13 @@ public:
 
 
             //fifth tri
-            uint32_t cymor5[3]={0,0,0};
+            uint32_t cymor5[3]={0,0,1};
             for(int i=0; i<3; i++) {
                 d += cymor5[i];
             }
-            uint32_t cy51[3]={0,cyl.r,0};
-            uint32_t cy52[3]={cos,-sin,0};
-            uint32_t cy53[3]={cyl.r,0,0};
+            uint32_t cy51[3]={0,cyl.r,j+10};
+            uint32_t cy52[3]={cos,-sin,j+10};
+            uint32_t cy53[3]={cyl.r,0,j+10};
             uint16_t end5=0;
             for(int i=0; i<3; i++){
                 d+=cy51[i];
@@ -226,13 +226,13 @@ public:
 
 
             //sixth tri
-            uint32_t cymor6[3]={0,0,0};
+            uint32_t cymor6[3]={0,0,1};
             for(int i=0; i<3; i++) {
                 d += cymor6[i];
             }
-            uint32_t cy61[3]={0,cyl.r,0};
-            uint32_t cy62[3]={cyl.r,0,0};
-            uint32_t cy63[3]={cos,sin,0};
+            uint32_t cy61[3]={0,cyl.r,j+10};
+            uint32_t cy62[3]={cyl.r,0,j+10};
+            uint32_t cy63[3]={cos,sin,j+10};
             uint16_t end6=0;
             for(int i=0; i<3; i++){
                 d+=cy61[i];
