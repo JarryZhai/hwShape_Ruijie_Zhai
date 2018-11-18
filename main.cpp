@@ -40,7 +40,7 @@ public:
 
     void write(const char *a) {
         ofstream out;
-        out.open("out.stl");
+        out.open(a);
         out<<"out"<<endl;
         out.close();
     }
@@ -249,7 +249,7 @@ public:
 
     void write(const char *a) {
         ofstream out;
-        out.open("test.stl");
+        out.open(a);
         out<<d;
         out.close();
     }
