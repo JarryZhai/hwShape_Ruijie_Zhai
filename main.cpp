@@ -23,7 +23,7 @@ class Cube{
 private:
     //double cx, cy, cz;
 public:
-    uint32_t s;
+    int32_t s;
     Cube(double s):s(s){
     }
 
@@ -66,7 +66,6 @@ public:
     Design(){
          uint8_t head [80]={0};
          uint32_t num=30;
-         d= nullptr;
          for(int i=0; i<80; i++){
              d += head[i];
          }
@@ -74,15 +73,15 @@ public:
     }
 
     void add(Cube c){
-        for(uint32_t k=0; k<c.s; k++){
+        for(int32_t k=0; k<c.s; k++){
             //first tri
             uint32_t mor1[3]={0,0,1};
             for(int i=0; i<3; i++){
                 d+=mor1[i];
             }
-            uint32_t c11[3]={-c.s/2,-c.s/2,k};
-            uint32_t c12[3]={c.s/2,-c.s/2,k};
-            uint32_t c13[3]={-c.s/2,c.s/2,k};
+            int32_t c11[3]={c.s/-2,c.s/-2,k};
+            int32_t c12[3]={c.s/2,c.s/-2,k};
+            int32_t c13[3]={c.s/-2,c.s/2,k};
             uint16_t end1=0;
             for(int i=0; i<3; i++){
                 d+=c11[i];
@@ -100,9 +99,9 @@ public:
             for(int i=0; i<3; i++){
                 d+=mor2[i];
             }
-            uint32_t c21[3]={c.s/2,-c.s/2,k};
-            uint32_t c22[3]={-c.s/2,c.s/2,k};
-            uint32_t c23[3]={c.s/2,c.s/2,k};
+            int32_t c21[3]={c.s/2,-c.s/2,k};
+            int32_t c22[3]={-c.s/2,c.s/2,k};
+            int32_t c23[3]={c.s/2,c.s/2,k};
             uint16_t end2=0;
             for(int i=0; i<3; i++){
                 d+=c21[i];
@@ -244,6 +243,7 @@ public:
                 d+=cy63[i];
             }
             d+=end6;
+            cout<<cos;
         }
     }
 
